@@ -382,10 +382,6 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.String;
-    blogPostStatus: Schema.Attribute.Enumeration<
-      ['draft', 'published', 'archived', 'scheduled']
-    >;
-    callToAction: Schema.Attribute.RichText;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     content: Schema.Attribute.RichText;
     coverImage: Schema.Attribute.Media<
@@ -405,15 +401,10 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     readingTime: Schema.Attribute.Integer;
     seoURL: Schema.Attribute.UID<'slug'>;
     slug: Schema.Attribute.String;
-    tags: Schema.Attribute.JSON;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -908,10 +899,6 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    blog_posts: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::blog-post.blog-post'
-    >;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;

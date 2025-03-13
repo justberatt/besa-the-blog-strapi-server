@@ -38,39 +38,18 @@
     "excerpt": {
       "type": "richtext"
     },
-    "blogPostStatus": {
-      "type": "enumeration",
-      "enum": [
-        "draft",
-        "published",
-        "archived",
-        "scheduled"
-      ]
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "blog_posts"
     },
-    "tags": {
-      "type": "json"
-    },
     "readingTime": {
       "type": "integer"
-    },
-    "callToAction": {
-      "type": "richtext"
     },
     "seoURL": {
       "type": "uid",
       "targetField": "slug"
-    },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "blog_posts"
     }
   }
 }
